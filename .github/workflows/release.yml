@@ -42,13 +42,17 @@ jobs:
       - name: build
         run: pnpm build
 
-      - name: publish gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          force_orphan: true
-          cname: d.metacubex.one
+      - name: Git push assets to "gh-pages" branch
+        run: |
+          cd dist || exit 1
+          git init
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b gh-pages
+          git add .
+          git commit -m "${{ env.RELEASE_NAME }}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f -u origin gh-pages
 
       - name: compress dist
         run: tar czvf compressed-dist.tgz -C dist .
