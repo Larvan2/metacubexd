@@ -8,7 +8,7 @@ export const IPv6Support = (props: { name?: string }) => {
   return (
     <Show when={support()}>
       <span class="badge badge-sm p-px">
-        <span class="scale-75">IPv6</span>
+        <span class="scale-70">v6</span>
       </span>
     </Show>
   )
