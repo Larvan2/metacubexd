@@ -286,6 +286,7 @@ const ConfigForm = () => {
               <option>gVisor</option>
               <option>System</option>
               <option>LWIP</option>
+              <option>Mixed</option>
             </select>
           </div>
 
