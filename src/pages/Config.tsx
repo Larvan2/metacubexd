@@ -284,6 +284,7 @@ const ConfigForm: Component<{ backendVersion: Accessor<string> }> = ({
               <option>gVisor</option>
               <option>System</option>
               <option>LWIP</option>
+              <option>Mixed</option>
             </select>
           </div>
 
