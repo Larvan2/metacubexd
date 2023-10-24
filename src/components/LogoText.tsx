@@ -12,7 +12,7 @@ export const LogoText = () => (
     <span>(</span>
     <a
       class="text-primary transition-transform hover:rotate-90 hover:scale-125"
-      href="https://github.com/metacubex/metacubexd"
+      href="https://github.com/larvan2/metacubexd"
       target="_blank"
     >
       xd
