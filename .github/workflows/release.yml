@@ -62,6 +62,8 @@ jobs:
     needs: release-please
     runs-on: ubuntu-latest
     if: ${{ needs.release-please.outputs.release_created }}
+    env:
+      DOCKER_REGISTRY: ghcr.io
     steps:
       - uses: actions/checkout@v4
 
@@ -72,10 +74,10 @@ jobs:
         uses: docker/setup-buildx-action@v3
         id: buildx
 
-      - name: login to ghcr.io
+      - name: login to Docker registry
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
+          registry: ${{ env.DOCKER_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -88,6 +90,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/metacubex/metacubexd:latest
+            ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
