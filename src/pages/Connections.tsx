@@ -184,7 +184,15 @@ export default () => {
     {
       header: () => t('chains'),
       accessorKey: CONNECTIONS_TABLE_ACCESSOR_KEY.Chains,
-      accessorFn: (original) => original.chains.slice().reverse().join(' :: '),
+      accessorFn: (original) => {
+        const chains = original.chains
+
+        if (chains.length > 1) {
+          return `${chains[chains.length - 1]} :: ${chains[0]}`
+        } else {
+          return chains[0]
+        }
+      },
     },
     {
       header: () => t('connectTime'),
