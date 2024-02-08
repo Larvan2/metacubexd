@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ needs.release-please.outputs.release_created }}
     env:
-      DOCKER_REGISTRY: ghcr.io
+      DOCKER_REGISTRY: docker.io
     steps:
       - uses: actions/checkout@v4
 
@@ -77,9 +77,9 @@ jobs:
       - name: login to Docker registry
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.DOCKER_REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.DOCKER_HUB_USER }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - name: build and publish ghcr.io docker image
         uses: docker/build-push-action@v6
