@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.137.1](https://github.com/Larvan2/metacubexd/compare/v1.137.0...v1.137.1) (2024-02-08)
+
+
+### Bug Fixes
+
+* docker push fail ([0cde30e](https://github.com/Larvan2/metacubexd/commit/0cde30e78a96233201946dcdb4aeadd3034db0e8))
+
 ## [1.137.0](https://github.com/Larvan2/metacubexd/compare/v1.136.0...v1.137.0) (2024-02-08)
 
 
