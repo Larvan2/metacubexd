@@ -167,6 +167,11 @@ export default () => {
             ? original.metadata.host
             : original.metadata.destinationIP
         }:${original.metadata.destinationPort}`,
+      cell: ({ row }) => (
+        <div class="max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap">
+          {row.getValue(CONNECTIONS_TABLE_ACCESSOR_KEY.Host)}
+        </div>
+      ),
     },
     {
       header: () => t('sniffHost'),
